@@ -10,7 +10,7 @@ export default function Page() {
       <h1>PSYC 365 Presentation</h1>
 
       <ul className={styles.authorList}>
-        <li>Guy 1, 12345678</li>
+        <li>Eitan Klinger, 41432253</li>
         <li>Guy 2, 12345678</li>
         <li>Guy 3, 12345678</li>
       </ul>
