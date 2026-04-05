@@ -1,9 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-text: 
+}
+
 .navigation {
-  margin-bottom: 2px;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 1rem;
 }
 
 .tabButton {
-  
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: #f4f4f4; /* Inactive background */
+  color: #333;               /* Inactive text */
+  border: 1px solid #ccc;
+}
+
+.activeTabButton {
+  background-color: #0056b3; /* Active background */
+  color: #ffffff;            /* Active text */
+  border-color: #0056b3;
 }
 
 .authorList {
@@ -18,18 +37,34 @@
   color: #555;
 }
 
+.splitLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.leftColumn {
+}
+
+.rightColumn {
+  background-color: #f4f4f4;
+  padding: 2rem;
+  min-height: 300px;
+  border-radius: 8px;
+}
+
 .pageTitle {
-  margin-right: 50vw;
-  text-align: center;
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
 .bodyText {
-  margin-right: 50vw;
+  line-height: 1.6;
 }
 
 .introText {
-  composes: bodyText;
 }
+
 .ratText {
-  composes: bodyText;
 }

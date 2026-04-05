@@ -4,7 +4,8 @@ import styles from './page.module.css';
 
 const defaultSection = {
   title: "Unimplemented Tab",
-  bodyText: <p className={styles.bodyText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at accumsan quam. Fusce molestie velit a dui porta faucibus. Mauris feugiat, ante ac aliquam pulvinar, diam ipsum elementum nibh, quis iaculis velit elit tempus est. Duis aliquet arcu ac odio rutrum, id gravida purus pharetra. Nullam ultricies sem eu mi ornare ultricies sed vel odio. Proin non lorem rhoncus, bibendum mi at, interdum ligula. Quisque vel venenatis erat. Maecenas ut tortor leo. Nunc tincidunt varius nulla, vel dictum nulla. Ut porta ipsum elit, vel elementum lectus porttitor ac. Aliquam gravida, risus eu interdum venenatis, odio risus ullamcorper sem, a dapibus lacus diam eget mi. </p>
+  bodyText: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at accumsan quam. Fusce molestie velit a dui porta faucibus. Mauris feugiat, ante ac aliquam pulvinar, diam ipsum elementum nibh, quis iaculis velit elit tempus est. Duis aliquet arcu ac odio rutrum, id gravida purus pharetra. Nullam ultricies sem eu mi ornare ultricies sed vel odio. Proin non lorem rhoncus, bibendum mi at, interdum ligula. Quisque vel venenatis erat. Maecenas ut tortor leo. Nunc tincidunt varius nulla, vel dictum nulla. Ut porta ipsum elit, vel elementum lectus porttitor ac. Aliquam gravida, risus eu interdum venenatis, odio risus ullamcorper sem, a dapibus lacus diam eget mi. </p>,
+  sideContent: <p>Placeholder for right column content.</p>
 }
 
 const tabData = {
@@ -25,34 +26,40 @@ const tabData = {
       <br />
       <b>Gap 2:</b> <br />
       It is unclear whether automated assessments like semantic distancing capture functional connectivity similar to human assessments (page 501) 
-      <br />
+      </p>,
+    sideContent: <p>
       <b>Big Picture Question:</b> <br />
       Can the neural basis of creative thinking be identified by combining weighted degree analysis of resting-state fMRI data with both human and automated creativity assessment (semantic distancing)?
-    </p>
+      </p>
   },
   researchquestions: {
-    ...defaultSection
+    ...defaultSection,
+    title: "Research Questions"
   },
   methodology: {
-    ...defaultSection
+    ...defaultSection,
+    title: "Methodology"
   },
   results: {
-    ...defaultSection
+    ...defaultSection,
+    title: "Results"
   },
   discussion: {
-    ...defaultSection
+    ...defaultSection,
+    title: "Discussion"
   },
   conclusion: {
-    ...defaultSection
+    ...defaultSection,
+    title: "Conclusion"
   },
 
 }
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState('summary');
+  const [activeTab, setActiveTab] = useState('intro');
 
   return (
-    <main>
+    <main style={{ padding: '2rem'}}>
       <h1>PSYC 365 Presentation</h1>
 
       <ul className={styles.authorList}>
@@ -62,20 +69,29 @@ export default function Page() {
       </ul>
 
       <nav className={styles.navigation}>
-        <button className={styles.tabButton} onClick={() => setActiveTab('intro')}>Introduction</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('rationale')}>Rationale</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('researchquestions')}>Research Questions</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('methodology')}>Methodology</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('results')}>Results</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('discussion')}>Discussion</button>
-        <button className={styles.tabButton} onClick={() => setActiveTab('conclusion')}>Conclusion</button>
-      </nav>
+        {['intro', 'rationale', 'researchquestions', 'methodology', 'results', 'discussion', 'conclusion'].map((tab) => (
+          <button 
+            key={tab} 
+            className={`${styles.tabButton} ${activeTab === tab ? styles.activeTabButton : ''}`} 
+            onClick={() => setActiveTab(tab)}
+    >
+      {tabData[tab].title}
+    </button>
+  ))}
+</nav>
 
-      <section>
+      <section className={styles.splitLayout}>
         {activeTab in tabData && (
-          <div>
-            <h2 className={styles.pageTitle}>{tabData[activeTab].title}</h2>
-            <a className={styles.bodyText}>{tabData[activeTab].bodyText}</a></div>
+          <>
+            <div className={styles.leftColumn}>
+            {/* <h2 className={styles.pageTitle}>{tabData[activeTab].title}</h2> */}
+              <div className={styles.bodyText}>{tabData[activeTab].bodyText}</div>
+            </div>
+            
+            <div className={styles.rightColumn}>
+              {tabData[activeTab].sideContent}
+            </div>
+          </>
         )}
       </section>
     </main>

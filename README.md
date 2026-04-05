@@ -1,6 +1,7 @@
 # Psyc 365 Presentation!
 
 ## TODO:
+[ ] - Introduction
 
 [ ] - Rationale (knowledge gap)
 
