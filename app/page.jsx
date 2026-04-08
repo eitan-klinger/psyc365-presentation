@@ -10,8 +10,14 @@ export default function Page() {
   
   const sectionRefs = useRef([]);
 
+  const scrollContainerRef = useRef(null);
+
   useEffect(() => {
     setActiveSectionIndex(0);
+    
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
   }, [activeTab]);
 
   useEffect(() => {
@@ -84,7 +90,7 @@ export default function Page() {
                 </div>
               )}
 
-              <div className={styles.snapContainer}>
+              <div className={styles.snapContainer} ref={scrollContainerRef}>
                 {currentTabData.sections.map((section, index) => (
                   <div 
                     key={section.id}
