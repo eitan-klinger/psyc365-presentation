@@ -1,66 +1,53 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './page.module.css';
-
-const defaultSection = {
-  title: "Unimplemented Tab",
-  bodyText: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at accumsan quam. Fusce molestie velit a dui porta faucibus. Mauris feugiat, ante ac aliquam pulvinar, diam ipsum elementum nibh, quis iaculis velit elit tempus est. Duis aliquet arcu ac odio rutrum, id gravida purus pharetra. Nullam ultricies sem eu mi ornare ultricies sed vel odio. Proin non lorem rhoncus, bibendum mi at, interdum ligula. Quisque vel venenatis erat. Maecenas ut tortor leo. Nunc tincidunt varius nulla, vel dictum nulla. Ut porta ipsum elit, vel elementum lectus porttitor ac. Aliquam gravida, risus eu interdum venenatis, odio risus ullamcorper sem, a dapibus lacus diam eget mi. </p>,
-  sideContent: <p>Placeholder for right column content.</p>
-}
-
-const tabData = {
-  intro: {
-    ...defaultSection,
-    title: "Introduction",
-    bodyText: <p className={styles.introText}>Currently, because there is ambiguity in how creativity is assessed in research, finding the neural basis of this function remains a critical challenge. 
-      <br />Thus, the authors proposed to use an automated assessment called semantic distancing. 
-      <br />To consider this type of assessment, they applied it to find association between individual differences in resting-state networks when participants do a divergent thinking task. 
-      <br />Overall, they demonstrate that semantic distancing can be used to demonstrate patterns of resting-state connectivity associated with creative thinking ability</p>
-  },
-  rationale: {
-    ...defaultSection,
-    title: "Rationale",
-    bodyText: <p className={styles.ratText}>
-      <b>Gap 1:</b> <br />
-      It is unknown how interactions in resting-state functional connectivity relate to objective assessments of creativity (page 500)
-      <br />
-      <b>Gap 2:</b> <br />
-      It is unclear whether automated assessments like semantic distancing capture functional connectivity similar to human assessments (page 501) 
-      </p>,
-    sideContent: <p>
-      <b>Big Picture Question:</b> <br />
-      Can the neural basis of creative thinking be identified by combining weighted degree analysis of resting-state fMRI data with both human and automated creativity assessment (semantic distancing)?
-      </p>
-  },
-  researchquestions: {
-    ...defaultSection,
-    title: "Research Questions"
-  },
-  methodology: {
-    ...defaultSection,
-    title: "Methodology"
-  },
-  results: {
-    ...defaultSection,
-    title: "Results"
-  },
-  discussion: {
-    ...defaultSection,
-    title: "Discussion"
-  },
-  conclusion: {
-    ...defaultSection,
-    title: "Conclusion"
-  },
-
-}
+import { tabData } from './tabdata';
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState('intro');
+  const [activeTab, setActiveTab] = useState('rationale');
+  
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  
+  const sectionRefs = useRef([]);
 
+  useEffect(() => {
+    setActiveSectionIndex(0);
+  }, [activeTab]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.index);
+            setActiveSectionIndex(index);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5,
+      }
+    );
+
+    sectionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, [activeTab]);
+
+  const currentTabData = tabData[activeTab];
+  const hasSections = Boolean(currentTabData?.sections);
+
+  const tabHasGraphics = hasSections 
+    ? currentTabData.sections.some(section => section.sideContent)
+    : false;
+    
   return (
     <main style={{ padding: '2rem'}}>
-      <h1>Creative Connections: Computational Semantic Distance Captures Individual Creativity and Resting-State Functional Connectivity</h1>
+      <h1>Creative Connections</h1>
 
       <ul className={styles.authorList}>
         <li>Sean Holiday, 67709436</li>
@@ -69,28 +56,55 @@ export default function Page() {
       </ul>
 
       <nav className={styles.navigation}>
-        {['intro', 'rationale', 'researchquestions', 'methodology', 'results', 'discussion', 'conclusion'].map((tab) => (
+        {Object.keys(tabData).map((tab) => (
           <button 
             key={tab} 
             className={`${styles.tabButton} ${activeTab === tab ? styles.activeTabButton : ''}`} 
             onClick={() => setActiveTab(tab)}
-    >
-      {tabData[tab].title}
-    </button>
-  ))}
-</nav>
+          >
+            {tabData[tab].title}
+          </button>
+        ))}
+      </nav>
 
-      <section className={styles.splitLayout}>
-        {activeTab in tabData && (
+      <section className={tabHasGraphics ? styles.splitLayout : styles.singleLayout}>
+        {hasSections && (
           <>
-            <div className={styles.leftColumn}>
-            {/* <h2 className={styles.pageTitle}>{tabData[activeTab].title}</h2> */}
-              <div className={styles.bodyText}>{tabData[activeTab].bodyText}</div>
+            <div className={styles.leftColumnWrapper}>
+              
+              {/* Only render dots if there are multiple sections */}
+              {currentTabData.sections.length > 1 && (
+                <div className={styles.dotContainer}>
+                  {currentTabData.sections.map((_, index) => (
+                    <div 
+                      key={index} 
+                      className={`${styles.dot} ${activeSectionIndex === index ? styles.activeDot : ''}`}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <div className={styles.snapContainer}>
+                {currentTabData.sections.map((section, index) => (
+                  <div 
+                    key={section.id}
+                    ref={(el) => (sectionRefs.current[index] = el)}
+                    data-index={index}
+                    className={styles.snapSection}
+                  >
+                    {section.title && <h3>{section.title}</h3>}
+                    {section.text}
+                  </div>
+                ))}
+              </div>
             </div>
             
-            <div className={styles.rightColumn}>
-              {tabData[activeTab].sideContent}
-            </div>
+            {/* Only render the right column div if the tab requires it */}
+            {tabHasGraphics && (
+              <div className={styles.rightColumn}>
+                {currentTabData.sections[activeSectionIndex]?.sideContent}
+              </div>
+            )}
           </>
         )}
       </section>
