@@ -60,12 +60,12 @@ export default function Page() {
 
   return (
     <main style={{ padding: '2rem'}}>
-      <h1>PSYC 365 Presentation</h1>
+      <h1>Creative Connections: Computational Semantic Distance Captures Individual Creativity and Resting-State Functional Connectivity</h1>
 
       <ul className={styles.authorList}>
+        <li>Sean Holiday, 67709436</li>
         <li>Eitan Klinger, 41432253</li>
-        <li>Guy 2, 12345678</li>
-        <li>Guy 3, 12345678</li>
+        <li>Danny Yu, 35770213</li>
       </ul>
 
       <nav className={styles.navigation}>

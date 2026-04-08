@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --color-text: 
-}
-
 .navigation {
   margin-bottom: 2rem;
   border-bottom: 1px solid #ccc;
