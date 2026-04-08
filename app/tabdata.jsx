@@ -15,12 +15,17 @@ export const tabData = {
     sections: [
       {
         id: "intro-1",
-        text: <p >This website serves to communicate the findings of the paper on 
-            <ul> <a href="https://direct.mit.edu/jocn/article/33/3/499/95546/Creative-Connections-Computational-Semantic?guestAccessKey=">
-            Creative Connections: Computational Semantic Distance Captures Individual Creativity and Resting-State Functional Connectivity, 
-            </a></ul>
-            published by William Orwig, Ibai Diez, Patrizia Vannini, Roger Beaty, and Jorge Sepulcre, 
+        text: 
+        <div>
+            <p>This website serves to communicate the findings of the paper: </p>
+            <div style={{ paddingLeft: '1rem'}}>
+                <a href="https://direct.mit.edu/jocn/article/33/3/499/95546/Creative-Connections-Computational-Semantic?guestAccessKey=">
+                    Creative Connections: Computational Semantic Distance Captures Individual Creativity and Resting-State Functional Connectivity
+                </a>
+            </div>
+            <p>published by William Orwig, Ibai Diez, Patrizia Vannini, Roger Beaty, and Jorge Sepulcre, 
             in the Journal of Cognitive Neuroscience on March 1st 2021. </p>
+        </div>
       },
       {
         id: "intro-2",
