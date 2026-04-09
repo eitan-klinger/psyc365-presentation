@@ -287,7 +287,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           id: "scoring",
           title: "Procedure - Scoring",
           text: <p>
-            Both the fMRI and lab-based divergent thinking responses were scored for creative quality by four trained human raters who independently scored the creative quality of each response through qualities of uncommonness, remoteness, and cleverness. Each quality was judged on a likert scale from 1 (<i>not at all creative</i>) to 5 (<i>very creative</i>). The responses were further scored by computational models using semantic distance. 
+            Both the fMRI and lab-based divergent thinking responses were scored for creative quality by four trained human raters who independently scored the creative quality of each response through qualities of uncommonness, remoteness, and cleverness. Each quality was judged on a scale from 1 (<i>not at all creative</i>) to 5 (<i>very creative</i>). The responses were further scored by computational models using semantic distance. 
           </p>
         },
         {
@@ -362,7 +362,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Individual Connectivity Patterns and Divergent Thinking",
           text: <div>
             <p>
-              A link-level analysis was used to discover brain regions associated with semantic distance of DT. Strength of connectivity between primary visual areas and precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
+              A link-level analysis was used to discover brain regions associated with semantic distance of DT. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
             </p>
           </div>,
           sideContent: llc_graphic
