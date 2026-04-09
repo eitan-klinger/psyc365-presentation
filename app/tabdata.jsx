@@ -70,6 +70,26 @@ const definitions = {
         An equation-modeling technique to test whether observed data fits a pre-defined theoretical model.
       </p>
     </div>
+  ),
+  "dt": (
+    <div className={styles.definitionCard}>
+      <h3>Divergent Thinking</h3>
+    </div>
+  ),
+  "aut": (
+    <div className={styles.definitionCard}>
+      <h3>Alternative Uses Task</h3>
+    </div>
+  ),
+  "gv": (
+    <div className={styles.definitionCard}>
+      <h3>Visiospatial Intelligence</h3>
+    </div>
+  ),
+  "wd": (
+    <div className={styles.definitionCard}>
+      <h3>Weighted Distance</h3>
+    </div>
   )
 }
 
@@ -104,8 +124,26 @@ const dts = (
       alt="Scatterplot"
     />
     <p className={styles.figText}>
-      Consistency between human ratings of DT and semantic distance
+      Consistency between human ratings of divergent thinking and semantic distance
     </p>
+  </div>
+)
+
+const data_coll = (
+  <div>
+    <EnlargableImage
+      src="/graphics/task-procedure.png"
+      alt=""
+    />
+  </div>
+)
+
+const sem_dis = (
+  <div>
+    <EnlargableImage
+      src="/graphics/sem-dis.svg"
+      alt=""
+    />
   </div>
 )
 
@@ -157,6 +195,15 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               The authors propose an objective and computational solution&mdash;semantic distancing&mdash;that not only addresses these ambiguities but also has been shown to successfully capture individual differences in resting-state networks associated with creativity. 
           </p>,
         },
+        {
+          id: "overview",
+          title: "Overview",
+          text: <div>
+            <p>
+              In past literature, creativity has been defined as the production of novel and useful ideas to solve problems. In cognitive neuroscience, creativity is commonly assessed with tasks of divergent thinking (DT) which requires the production of multiple solutions to open-ended problems. A classic test to measure DT is the Alternative Uses Task (AUT). In this task, participants are prompted to generate alternative uses of an object, with their responses being graded by trained human raters.  Researchers have since used these human-rated DT scores to investigate the neural basis of creativity. 
+            </p>
+          </div>
+        }
       ]
     },
     rationale: {
@@ -166,13 +213,9 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           id: "prior-research1",
           title: "Prior Research",
           text: <p>
-              Prior neuroimaging studies have identified interactions between the 
-              <Term defKey="dmn">Default Mode Network (DMN)</Term>
-              and 
-              <Term defKey="ecn">executive control networks</Term>
-              as being associated with creative thinking. For instance, resting-state studies have found that individuals with greater fluctuations in DMN connectivity tend to score higher on 
-              <Term defKey="dtt">divergent thinking tasks</Term>
-              (Feng et al., 2019). However, these studies have largely relied on human ratings as a measure of creativity, which carries two notable limitations: <i>subjectivity</i>, as raters do not always agree on what constitutes a creative response, and labor <i>intensity</i>, as raters are often required to score thousands of responses by hand (Beaty & Johnson, 2020).
+              Prior neuroimaging studies have identified interactions between the <Term defKey="dmn">Default Mode Network (DMN)</Term> and <Term defKey="ecn">executive control networks</Term>
+              as being associated with creative thinking. For instance, resting-state studies have found that individuals with greater fluctuations in DMN
+              connectivity tend to score higher on <Term defKey="dtt">divergent thinking tasks</Term> (Feng et al., 2019). However, these studies have largely relied on human ratings as a measure of creativity, which carries two notable limitations: <i>subjectivity</i>, as raters do not always agree on what constitutes a creative response, and labor <i>intensity</i>, as raters are often required to score thousands of responses by hand (Beaty & Johnson, 2020).
           </p>,
         },
         {
@@ -200,7 +243,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           <div>
           <h2>Big Picture Question</h2>
           <p>
-              Can automated creativity assessments replace human assessments in DT tasks?
+              Can automated creativity assessments replace human assessments in <Term defKey="dtt">DT tasks</Term>?
               </p>
           <h2>Research Question</h2>
           <p>
@@ -252,11 +295,11 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           text: 
             <div>
               <p>
-                DT performance was assessed using the 
-                AUT 
-                across two formats. The first was a <i>separate task-based fMRI scan</i>, whereas the second was on a computer outside the scanner. 
+                <Term defKey="dt">DT</Term> performance was assessed using the <Term defKey="aut">AUT</Term> across two formats. 
+                The first was a <i>separate task-based fMRI scan</i>, whereas the second was on a computer outside the scanner. 
                 The AUT is a classic test to measure DT, where participants are prompted to think of alternative uses for a common object. 
               </p>
+              {data_coll}
             </div>
         },
         {
@@ -294,10 +337,11 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           id: "semantic dist",
           title: "Measurement of Semantic Distance",
           text: <p>
-            In natural language processing, words can be represented as vectors in a semantic space where similar words are located closer together. Semantic distance refers to how far apart two concepts are in this space. Connecting back to this study, greater distance between an object and a participant’s alternative use indicates increased originality in divergent thinking. 
+            In natural language processing (NLP), words can be represented as vectors in a semantic space where similar words are located closer together. Semantic distance refers to how far apart two concepts are in this space. Connecting back to this study, greater distance between an object and a participant's alternative use indicates increased originality in divergent thinking. 
             <br/>
-            SemDis estimates this semantic distance between an AUT object and a participant’s response by leveraging five NLP models, and averaging all of their distance scores together to produce an automated originality measure.
-          </p>
+            SemDis estimates this semantic distance between an <Term defKey="aut">AUT</Term> object and a participant's response by leveraging five NLP models, and averaging all of their distance scores together to produce an automated originality measure.
+          </p>,
+          sideContent: sem_dis
         },
         {
           id: "variables-disclaimer",
@@ -323,7 +367,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               </li>
             </ol>
             <p>
-              The authors further measured for visuospatial intelligence (Gv) as a control. 
+              The authors further measured for <Term defKey="gv">Gv</Term> as a control. 
             </p>
           </div>
         }
@@ -337,9 +381,8 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           id: "relationship",
           title: "Relationship Between Semantic and Human Creativity Ratings",
           text: <div>
-            Using a 
-            <Term defKey="cfa">confirmatory factor analysis</Term>
-            that measured semantic distance, human creative ratings, and Gc, the authors discovered a strong correlation (r = 0.81, p &lt; 0.001) between semantic distance and human creative ratings, indicating a high degree of overlap between the two (as displayed in Figure 3). In addition, Gv was found to be significantly correlated with human creativity (r= 0.46, p &lt; 0.001) but not semantic distance (r = 0.11, p = 0.29). This indicates that automated assessments of creativity, like semantic distance, share less variance with general cognitive behavior than human ratings.
+            Using a <Term defKey="cfa">confirmatory factor analysis (CFA)</Term> that 
+            measured semantic distance, human creative ratings, and <Term defKey="gv">Gv</Term>, the authors discovered a strong correlation (r = 0.81, p &lt; 0.001) between semantic distance and human creative ratings, indicating a high degree of overlap between the two (as displayed in Figure 3). In addition, Gv was found to be significantly correlated with human creativity (r= 0.46, p &lt; 0.001) but not semantic distance (r = 0.11, p = 0.29). This indicates that automated assessments of creativity, like semantic distance, share less variance with general cognitive behavior than human ratings.
           </div>,
           sideContent: dts
         },
@@ -349,7 +392,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           text:
           <div>
             <p>
-              Using a weighted degree (WD) analysis, DT semantic distance was found to be negatively correlated with weighted degree of voxels in the occipital cortex, the parietal-occipital, and temporal regions. There were no positive associations between weighted degree and DT. 
+              Using a weighted degree (WD) analysis, <Term defKey="dt">DT</Term> semantic distance was found to be negatively correlated with weighted degree of voxels in the occipital cortex, the parietal-occipital, and temporal regions. There were no positive associations between weighted degree and DT. 
             </p>
             <p>
               Furthermore, WD analysis with the human ratings of  DT revealed a 51% overlap in shared voxels between the two maps. Human ratings of DT were negatively correlated with WD of voxels in the occipital cortex and right temporal regions. WD of the right temporal pole was negatively associated with DT. There were no positive associations between WD and human ratings of DT. 
@@ -362,7 +405,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Individual Connectivity Patterns and Divergent Thinking",
           text: <div>
             <p>
-              A link-level analysis was used to discover brain regions associated with semantic distance of DT. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
+              A link-level analysis was used to discover brain regions associated with semantic distance of <Term defKey="dt">DT</Term>. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
             </p>
           </div>,
           sideContent: llc_graphic
@@ -372,7 +415,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Individual Connectivity Patterns and Divergent Thinking",
           text: <div>
             <p>
-              In addition, projections from the precuneus to the right inferior occipital cortex (fusiform), right inferior temporal, and occipital cortices were positively correlated with DT semantic distance. No positive associations were found with human ratings of DT. 
+              In addition, projections from the precuneus to the right inferior occipital cortex (fusiform), right inferior temporal, and occipital cortices were positively correlated with <Term defKey="dt">DT</Term> semantic distance. No positive associations were found with human ratings of DT. 
             </p>
             <p>
               This means that semantic distance shows a positive association between individual connectivity strength and DT, which human ratings do not reveal. 
@@ -390,7 +433,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: 'Discussion',
           text: <div>
             <p>
-              The study shows that the use of semantic distance can reliably reflect neural differences in measuring DT performance, providing future researchers with an objective and automated assessment that may prove to be more reliable than subjective human raters. In addition, the study found that rather than one brain region being responsible for creativity, it instead emerges through a balance of connectivity between sensory systems and the precuneus, reinforcing the view that the neuroscience of creativity should be studied through a systems approach. Finally, the study suggests that more work is needed to validate their findings on positive associations between DT and connectivity with the precuneus to the right inferior temporal regions and the negative associations between resting-state connectivity in the occipital cortex and DT, to discover how such associations are involved in generating creative thought. 
+              The study shows that the use of semantic distance can reliably reflect neural differences in measuring <Term defKey="dt">DT</Term> performance, providing future researchers with an objective and automated assessment that may prove to be more reliable than subjective human raters. In addition, the study found that rather than one brain region being responsible for creativity, it instead emerges through a balance of connectivity between sensory systems and the precuneus, reinforcing the view that the neuroscience of creativity should be studied through a systems approach. Finally, the study suggests that more work is needed to validate their findings on positive associations between DT and connectivity with the precuneus to the right inferior temporal regions and the negative associations between resting-state connectivity in the occipital cortex and DT, to discover how such associations are involved in generating creative thought. 
             </p>
           </div>
         },
@@ -399,7 +442,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: 'Interpretation 1: Creativity is linked to less reliance on raw sensory input',
           text: <div>
             <p>
-              The authors argue that people with higher DT (people who are more creative) are more prone to engage in internally directed cognition in the absence of an external task. These people show reduced connectivity in the primary visual areas which suggests a shift away from what the immediate visual input is. They connect this to the phenomenon of perceptual decoupling, which is the ability to disengage from the attention from perception. 
+              The authors argue that people with higher <Term defKey="dt">DT</Term> (people who are more creative) are more prone to engage in internally directed cognition in the absence of an external task. These people show reduced connectivity in the primary visual areas which suggests a shift away from what the immediate visual input is. They connect this to the phenomenon of perceptual decoupling, which is the ability to disengage from the attention from perception. 
             </p>
             <p>
               As such, the authors believe that creativity depends on the integration of selective information, rather than greater holistic connectivity. By contrasting the lower connectivity in basic visual regions with the stronger connectivity between higher-level visual areas, they believe that this pattern demonstrates a suppression of low-level sensory noise and enhances communication between abstract processing and integration systems. 
@@ -411,7 +454,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Interpretation 2: The precuneus' role is in coordination",
           text: <div>
             <p>
-              Given that the linked-level analysis showed that the precuneus is both positively and negatively associated with DT, where it had stronger links with higher order visual areas, which supports the generation and integration of ideas, but also weaker links with primary sensory organs like the primary visual cortex, which indicates reduced constraint from perception. Based on this, the authors intercept the precuneus as a multimodal integration hub and that is also responsible for creative problem solving.
+              Given that the linked-level analysis showed that the precuneus is both positively and negatively associated with <Term defKey="dt">DT</Term>, where it had stronger links with higher order visual areas, which supports the generation and integration of ideas, but also weaker links with primary sensory organs like the primary visual cortex, which indicates reduced constraint from perception. Based on this, the authors intercept the precuneus as a multimodal integration hub and that is also responsible for creative problem solving.
             </p>
           </div>
         },
@@ -438,10 +481,10 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
                 <u>Large Sample Size</u>: With 175 participants after exclusion, the results are backed with high power when establishing functional connections between the brain associated with divergent thinking. Furthermore, certain participants were oversampled (by major) to discover the qualities (creativity) the study was examining. 
               </li>  
               <li> 
-                <u>High Construct Validity</u>: Semantic distancing has high construct validity for creativity. Based on the results from CFA, a strong correlation (r = 0.81) was found to be statistically significant between human ratings and semantic distancing.
+                <u>High Construct Validity</u>: Semantic distancing has high construct validity for creativity. Based on the results from <Term defKey="cfa">CFA</Term>, a strong correlation (r = 0.81) was found to be statistically significant between human ratings and semantic distancing.
               </li>
               <li>
-                <u>High Discriminant Validity</u>: Semantic distancing has discriminant validity with Gv. The correlation between semantic distancing Gv was weak (r = 0.21) and statistically insignificant, further cementing the argument that semantic distancing reliably only measures divergent thinking. 
+                <u>High Discriminant Validity</u>: Semantic distancing has discriminant validity with <Term defKey="gv">Gv</Term>. The correlation between semantic distancing Gv was weak (r = 0.21) and statistically insignificant, further cementing the argument that semantic distancing reliably only measures divergent thinking. 
               </li>
             </ol>
           </div>
@@ -461,7 +504,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
                 Semantic distance focuses only on the creative quality of ideas, thus this measurement reflects a limited view into the cognitive basis in creativity. Depending on other methods of operationalization, the use of semantic distance may be less applicable. 
               </li>
               <li>
-                <u>No Benchmark for WD maps</u>: 
+                <u>No Benchmark for <Term defKey="wd">WD</Term> maps</u>: 
                   Despite the observed overlap between WD maps generated from human ratings and semantic distance of 51% of common voxels, there is no standardized magnitude for determining whether that overlap is significant, nor is there a clear explanation for its function. 
               </li>
             </ol>
@@ -479,7 +522,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
                 Resting-state fMRI with weighted degree and link-level analysis allowed researchers to examine both global network properties and specific functional connections associated with divergent thinking performance. 
               </li>
               <li>
-                Furthermore, confirmatory factor analysis (CFA) was an appropriate statistical method to test whether semantic distance and human creativity ratings reflected a shared latent construct, revealing a strong latent correlation between the two measures (r = .81, p &lt; 0.001). This supports semantic distancing as a reliable and valid metric of creativity.  
+                Furthermore, <Term defKey="cfa">CFA</Term> was an appropriate statistical method to test whether semantic distance and human creativity ratings reflected a shared latent construct, revealing a strong latent correlation between the two measures (r = .81, p &lt; 0.001). This supports semantic distancing as a reliable and valid metric of creativity.  
               </li>
             </ul>
           </div>
@@ -495,7 +538,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               The finding that reduced occipital connectivity is associated with higher divergent thinking is consistent across both semantic distance and human ratings, which strengthens the reliability of the result. The perceptual decoupling interpretation is grounded in prior literature, giving it theoretical backing. 
             </p>
             <p>
-              The conclusion about precuneus connectivity being positively associated with divergent thinking also follows reasonably from the link-level findings, and is consistent with the precuneus being a known hub of the DMN involved in multimodal integration.
+              The conclusion about precuneus connectivity being positively associated with divergent thinking also follows reasonably from the link-level findings, and is consistent with the precuneus being a known hub of the <Term defKey="dmn">DMN</Term> involved in multimodal integration.
             </p>
             <p>
               Given the correlational and exploratory nature of the study, the author did well in isolating data points that did not match prior research and offered sufficient reasoning on why such differences may have occurred due to differences in methodology. 
@@ -508,7 +551,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           text:
           <div>
             <p>
-              While this study identifies correlation between resting-state connectivity and DT performance, it is not clear whether these brain regions play a casual role in creativity. Neuromodulation techniques, such as Transcranial Magnetic Stimulation, could test whether manipulating activity in these identified regions leads to significant changes in DT performance. 
+              While this study identifies correlation between resting-state connectivity and <Term defKey="DT">DT</Term> performance, it is not clear whether these brain regions play a casual role in creativity. Neuromodulation techniques, such as Transcranial Magnetic Stimulation, could test whether manipulating activity in these identified regions leads to significant changes in DT performance. 
             </p>
             <p>
               DT represents only one operationalized component of creativity. Thus, it is worth investigating how well semantic distance measures predict creativity across different tasks outside of divergent thinking.
