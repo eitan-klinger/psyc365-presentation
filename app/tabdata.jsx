@@ -33,7 +33,7 @@ const definitions = {
   ),
   "lla": (
     <div className={styles.definitionCard}>
-      <h3>Linked-level Analysis</h3>
+      <h3>Linked-Level Analysis</h3>
       <p>
         Measures the strength of connections between brain regions.</p>
     </div>
@@ -239,7 +239,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               </p>
           <h2>Research Question</h2>
           <p>
-            Do resting-state functional connectivity patterns identified by using <Term defKey="wd">weighted degree (WD)</Term> & <Term defKey="lla">linked-level (graph theory) analysis</Term>
+            Do resting-state functional connectivity patterns identified by using <Term defKey="wd">weighted degree (WD)</Term> & <Term defKey="lla">linked-level (graph theory) analysis (LLA)</Term>
             relate to creative thinking ability measured through both human ratings and automated semantic distance? 
           </p>
           </div>
