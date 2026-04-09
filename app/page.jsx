@@ -4,7 +4,7 @@ import styles from './page.module.css';
 import { getTabData } from './tabdata';
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState('rationale');
+  const [activeTab, setActiveTab] = useState('intro');
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   
   const [activeDefinition, setActiveDefinition] = useState(null);
