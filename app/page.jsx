@@ -8,6 +8,7 @@ export default function Page() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   
   const [activeDefinition, setActiveDefinition] = useState(null);
+  const [lockedDefinition, setLockedDefinition] = useState(null);
 
   const sectionRefs = useRef([]);
   const scrollContainerRef = useRef(null);
@@ -15,8 +16,9 @@ export default function Page() {
   const currentIndexRef = useRef(activeSectionIndex);
 
   const tabData = getTabData(
-    (content) => setActiveDefinition(content),
-    () => setActiveDefinition(null)
+    (content) => setActiveDefinition(content), 
+    () => setActiveDefinition(null),
+    (content) => setLockedDefinition(prev => prev === content ? null : content)
   );
 
   useEffect(() => {
@@ -26,6 +28,7 @@ export default function Page() {
   useEffect(() => {
     setActiveSectionIndex(0);
     setActiveDefinition(null);
+    setLockedDefinition(null);
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
     }
@@ -131,7 +134,7 @@ export default function Page() {
         ))}
       </nav>
 
-      <section className={tabHasGraphics ? styles.splitLayout : styles.singleLayout}>
+      <section className={styles.splitLayout}>
         {hasSections && (
           <>
             <div className={styles.leftColumnWrapper}>
@@ -165,7 +168,7 @@ export default function Page() {
                     data-index={index}
                     className={styles.snapSection}
                   >
-                    {section.title && <h3>{section.title}</h3>}
+                    {section.title && <h2>{section.title}</h2>}
                     {section.text}
                   </div>
                 ))}
@@ -173,11 +176,14 @@ export default function Page() {
             </div>
             
             {/* Only render the right column div if the tab requires it */}
-            {tabHasGraphics && (
+            {(
               <div className={styles.rightColumn}>
-                {activeDefinition
-                  ? activeDefinition
-                  : currentTabData.sections[activeSectionIndex]?.sideContent}
+                {currentTabData.sections[activeSectionIndex]?.sideContent}
+                {(lockedDefinition || activeDefinition) && (
+                  <div className={styles.definitionOverlay}>
+                  {lockedDefinition ? lockedDefinition : activeDefinition}
+                  </div>
+                )}
               </div>
             )}
           </>
