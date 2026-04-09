@@ -74,21 +74,33 @@ const definitions = {
   "dt": (
     <div className={styles.definitionCard}>
       <h3>Divergent Thinking</h3>
+      <p>
+        One form of creativity that requires the production of multiple solutions to open-ended problems.
+      </p>
     </div>
   ),
   "aut": (
     <div className={styles.definitionCard}>
       <h3>Alternative Uses Task</h3>
+      <p>
+        A classic test to measure DT, where participants are prompted to think of alternative uses for a common object.
+      </p>
     </div>
   ),
   "gv": (
     <div className={styles.definitionCard}>
       <h3>Visiospatial Intelligence</h3>
+      <p>
+        The ability to mentally manipulate and reason about visual and spatial information, assessed in this study through paper-folding, block-rotation, and cube comparison tasks.
+      </p>
     </div>
   ),
   "wd": (
     <div className={styles.definitionCard}>
       <h3>Weighted Distance</h3>
+      <p>
+        A measure of how strongly connected each brain region is to the rest of the brain, calculated by summing all of its weighted connections to every other region. A higher weighted degree indicates that a brain region plays a more central and influential role in the overall brain network.
+      </p>
     </div>
   )
 }
@@ -147,6 +159,19 @@ const sem_dis = (
   </div>
 )
 
+const precuneus = (
+  <div>
+    <EnlargableImage
+    src="/graphics/precuneus.jpg"
+    alt="Diagram of the precuneus' location in the brain"
+    />
+    <br/>
+    <p className={styles.figText}>
+      Precuneus' location in the brain
+    </p>
+  </div>
+)
+
 export const getTabData = (setDef, clearDef, toggleDef) => {
 
   const Term = ({ children, defKey }) => (
@@ -200,7 +225,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Overview",
           text: <div>
             <p>
-              In past literature, creativity has been defined as the production of novel and useful ideas to solve problems. In cognitive neuroscience, creativity is commonly assessed with tasks of divergent thinking (DT) which requires the production of multiple solutions to open-ended problems. A classic test to measure DT is the Alternative Uses Task (AUT). In this task, participants are prompted to generate alternative uses of an object, with their responses being graded by trained human raters.  Researchers have since used these human-rated DT scores to investigate the neural basis of creativity. 
+              In past literature, creativity has been defined as the production of novel and useful ideas to solve problems. In cognitive neuroscience, creativity is commonly assessed with tasks of <Term defKey="dt">divergent thinking (DT)</Term> which requires the production of multiple solutions to open-ended problems. A classic test to measure DT is the <Term defKey="aut">Alternative Uses Task (AUT)</Term>. In this task, participants are prompted to generate alternative uses of an object, with their responses being graded by trained human raters.  Researchers have since used these human-rated DT scores to investigate the neural basis of creativity. 
             </p>
           </div>
         }
@@ -320,7 +345,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           text:
             <div>
               <p>
-                Finally, participants completed a test of visuospatial intelligence (Gv) to measure the ability to mentally manipulate visual stimuli assessed through three tasks: paper-folding, block-rotation, and cube comparisons. This served as a control measure to demonstrate that semantic distance captures creative thinking independently of general intelligence.
+                Finally, participants completed a test of <Term defKey="gv">visuospatial intelligence (Gv)</Term> to measure the ability to mentally manipulate visual stimuli assessed through three tasks: paper-folding, block-rotation, and cube comparisons. This served as a control measure to demonstrate that semantic distance captures creative thinking independently of general intelligence.
                 <br/>
                 Participants also underwent a 5-minute resting-state scan on a 3 T Siemens MRI system, during which they were instructed to close their eyes, relax, but be awake. It is unclear from the study description of when the resting-state scan occurred. 
                 </p>
@@ -408,7 +433,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               A link-level analysis was used to discover brain regions associated with semantic distance of <Term defKey="dt">DT</Term>. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
             </p>
           </div>,
-          sideContent: llc_graphic
+          sideContent: precuneus
         },
         {
           id: "connectivity2",
