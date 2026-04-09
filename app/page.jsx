@@ -114,14 +114,13 @@ export default function Page() {
     
   return (
     <main style={{ padding: '1rem'}}>
-      <h1>Creative Connections</h1>
-
+      <h1 style={{ display: 'flex',justifyContent: 'center'}}>Creative Connections</h1>
+      
       <ul className={styles.authorList}>
         <li>Sean Holiday, 67709436</li>
         <li>Eitan Klinger, 41432253</li>
         <li>Danny Yu, 35770213</li>
       </ul>
-
       <nav className={styles.navigation}>
         {Object.keys(tabData).map((tab) => (
           <button 

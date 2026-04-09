@@ -92,7 +92,7 @@ const brain_region_graphic = (
       alt="Brain regions correlated with divergent thinking and human ratings"
     />
     <p className={styles.figText}>
-      Brain regions correlated with divergent thinking and human ratings
+      Brain regions negatively correlated with divergent thinking and human ratings
     </p>
   </div>
 )
@@ -128,7 +128,10 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
       sections: [
         {
           id: "welcome",
-          text: <p>Welcome! We are Danny, Eitan, and Sean and we have developed this website to showcase our PSYC 365 project. </p>
+          title: "Group 16",
+          text: <p>
+            Welcome! We are Danny, Eitan, and Sean and we have developed this website to showcase our PSYC 365 project. 
+            </p>
         },
         {
           id: "intro-1",
@@ -343,6 +346,15 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
         {
           id: "brain-areas",
           title: "Brain Areas Associated with Divergent Thinking",
+          text:
+          <div>
+            <p>
+              Using a weighted degree (WD) analysis, DT semantic distance was found to be negatively correlated with weighted degree of voxels in the occipital cortex, the parietal-occipital, and temporal regions. There were no positive associations between weighted degree and DT. 
+            </p>
+            <p>
+              Furthermore, WD analysis with the human ratings of  DT revealed a 51% overlap in shared voxels between the two maps. Human ratings of DT were negatively correlated with WD of voxels in the occipital cortex and right temporal regions. WD of the right temporal pole was negatively associated with DT. There were no positive associations between WD and human ratings of DT. 
+            </p>
+          </div>,
           sideContent: brain_region_graphic
         },
         {

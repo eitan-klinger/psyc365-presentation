@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --scroll-height: 55vh;
+  --scroll-height: 52vh;
   --border-rad: 12px;
   --snap-bg: #ffffff82;
 }
