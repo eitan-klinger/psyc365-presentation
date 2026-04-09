@@ -3,31 +3,6 @@ import Image from 'next/image';
 import EnlargableImage from './EnlargableImage';
 
 const definitions = {
-  "neuroscience of creativity": (
-    <div className={styles.definitionCard}>
-      <h3>Neuroscience of Creativity</h3>
-      <p>Disentangling the brain processes that facilitate the generation of novel ideas.</p>
-    </div>
-  ),
-  "creativity": (
-    <div className={styles.definitionCard}>
-      <h3>Creativity</h3>
-      <p>The production of novel and useful ideas to solve problems assessed with tasks of divergent thinking.</p>
-    </div>
-  ),
-  "associative theory of creativity": (
-    <div className={styles.definitionCard}>
-      <h3>Associative Theory of Creativity</h3>
-      <p>Characterizes creative thought as a novel and useful recombination of semantic knowledge </p>
-    </div>
-  ),
-  "lsdf": (
-    <div className={styles.definitionCard}>
-      <h3>Latent Semantic Distance Factor</h3>
-      <p>A combination of computational semantic models that show a high correspondence to human ratings of novelty and creativity (how semantic distance is measured).
-      </p>
-    </div>
-  ),
   "dmn": (
     <div className={styles.definitionCard}>
       <h3>Default Mode Network</h3>
@@ -95,14 +70,6 @@ const definitions = {
       </p>
     </div>
   ),
-  "wd": (
-    <div className={styles.definitionCard}>
-      <h3>Weighted Distance</h3>
-      <p>
-        A measure of how strongly connected each brain region is to the rest of the brain, calculated by summing all of its weighted connections to every other region. A higher weighted degree indicates that a brain region plays a more central and influential role in the overall brain network.
-      </p>
-    </div>
-  )
 }
 
 const llc_graphic = (
@@ -272,10 +239,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               </p>
           <h2>Research Question</h2>
           <p>
-            Do resting-state functional connectivity patterns identified by using 
-            <Term defKey="wd">weighted degree</Term> 
-            & 
-            <Term defKey="lla">linked-level (graph theory) analysis</Term>
+            Do resting-state functional connectivity patterns identified by using <Term defKey="wd">weighted degree (WD)</Term> & <Term defKey="lla">linked-level (graph theory) analysis</Term>
             relate to creative thinking ability measured through both human ratings and automated semantic distance? 
           </p>
           </div>
@@ -417,7 +381,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           text:
           <div>
             <p>
-              Using a weighted degree (WD) analysis, <Term defKey="dt">DT</Term> semantic distance was found to be negatively correlated with weighted degree of voxels in the occipital cortex, the parietal-occipital, and temporal regions. There were no positive associations between weighted degree and DT. 
+              Using a <Term defKey="wd">WD</Term>, <Term defKey="dt">DT</Term> semantic distance was found to be negatively correlated with <Term defKey="wd">WD</Term> of voxels in the occipital cortex, the parietal-occipital, and temporal regions. There were no positive associations between WD and DT. 
             </p>
             <p>
               Furthermore, WD analysis with the human ratings of  DT revealed a 51% overlap in shared voxels between the two maps. Human ratings of DT were negatively correlated with WD of voxels in the occipital cortex and right temporal regions. WD of the right temporal pole was negatively associated with DT. There were no positive associations between WD and human ratings of DT. 
@@ -430,7 +394,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Individual Connectivity Patterns and Divergent Thinking",
           text: <div>
             <p>
-              A link-level analysis was used to discover brain regions associated with semantic distance of <Term defKey="dt">DT</Term>. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
+              <Term defKey="lla">LLA</Term> was used to discover brain regions associated with semantic distance of <Term defKey="dt">DT</Term>. Strength of connectivity between primary visual areas and the precuneus was negatively associated with DT. A similar connection was found with human ratings of DT, where connectivity across the occipital cortex and projection to the right primary motor and somatosensory areas were negatively associated with human ratings of DT
             </p>
           </div>,
           sideContent: precuneus
@@ -479,7 +443,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
           title: "Interpretation 2: The precuneus' role is in coordination",
           text: <div>
             <p>
-              Given that the linked-level analysis showed that the precuneus is both positively and negatively associated with <Term defKey="dt">DT</Term>, where it had stronger links with higher order visual areas, which supports the generation and integration of ideas, but also weaker links with primary sensory organs like the primary visual cortex, which indicates reduced constraint from perception. Based on this, the authors intercept the precuneus as a multimodal integration hub and that is also responsible for creative problem solving.
+              Given that the <Term defKey="lla">LLA</Term> showed that the precuneus is both positively and negatively associated with <Term defKey="dt">DT</Term>, where it had stronger links with higher order visual areas, which supports the generation and integration of ideas, but also weaker links with primary sensory organs like the primary visual cortex, which indicates reduced constraint from perception. Based on this, the authors intercept the precuneus as a multimodal integration hub and that is also responsible for creative problem solving.
             </p>
           </div>
         },
@@ -544,7 +508,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
             </p>  
             <ul>
               <li>
-                Resting-state fMRI with weighted degree and link-level analysis allowed researchers to examine both global network properties and specific functional connections associated with divergent thinking performance. 
+                Resting-state fMRI with weighted degree and <Term defKey="lla">LLA</Term> allowed researchers to examine both global network properties and specific functional connections associated with divergent thinking performance. 
               </li>
               <li>
                 Furthermore, <Term defKey="cfa">CFA</Term> was an appropriate statistical method to test whether semantic distance and human creativity ratings reflected a shared latent construct, revealing a strong latent correlation between the two measures (r = .81, p &lt; 0.001). This supports semantic distancing as a reliable and valid metric of creativity.  
@@ -563,7 +527,7 @@ export const getTabData = (setDef, clearDef, toggleDef) => {
               The finding that reduced occipital connectivity is associated with higher divergent thinking is consistent across both semantic distance and human ratings, which strengthens the reliability of the result. The perceptual decoupling interpretation is grounded in prior literature, giving it theoretical backing. 
             </p>
             <p>
-              The conclusion about precuneus connectivity being positively associated with divergent thinking also follows reasonably from the link-level findings, and is consistent with the precuneus being a known hub of the <Term defKey="dmn">DMN</Term> involved in multimodal integration.
+              The conclusion about precuneus connectivity being positively associated with divergent thinking also follows reasonably from the <Term defKey="lla">LLA</Term> findings, and is consistent with the precuneus being a known hub of the <Term defKey="dmn">DMN</Term> involved in multimodal integration.
             </p>
             <p>
               Given the correlational and exploratory nature of the study, the author did well in isolating data points that did not match prior research and offered sufficient reasoning on why such differences may have occurred due to differences in methodology. 
