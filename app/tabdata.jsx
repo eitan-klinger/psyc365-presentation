@@ -1,15 +1,28 @@
 import styles from './page.module.css';
 
-const defaultSection = {
-  title: "Unimplemented Tab",
-  sections: [
-    {
-        id: "default-2",
-        text: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at accumsan quam. Fusce molestie velit a dui porta faucibus. Mauris feugiat, ante ac aliquam pulvinar, diam ipsum elementum nibh, quis iaculis velit elit tempus est. Duis aliquet arcu ac odio rutrum, id gravida purus pharetra. Nullam ultricies sem eu mi ornare ultricies sed vel odio. Proin non lorem rhoncus, bibendum mi at, interdum ligula. Quisque vel venenatis erat. Maecenas ut tortor leo. Nunc tincidunt varius nulla, vel dictum nulla. Ut porta ipsum elit, vel elementum lectus porttitor ac. Aliquam gravida, risus eu interdum venenatis, odio risus ullamcorper sem, a dapibus lacus diam eget mi.</p>,
-    }]
+const definitions = {
+  "neuroscience of creativity": (
+    <div classname={styles.definitionCard}>
+      <h3>Neuroscience of Creativity</h3>
+      <p>Disentangling the brain processes that facilitate the generation of novel ideas.</p>
+    </div>
+  ),
+  "creativity": (
+    <div classname={styles.definitionCard}>
+      <h3>Creativity</h3>
+      <p>The production of novel and useful ideas to solve problems assessed with tasks of divergent thinking.</p>
+    </div>
+  ),
 }
 
-export const tabData = {
+
+const defaultSection = {
+  title: "Unimplemented Tab",
+  text: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at accumsan quam. Fusce molestie velit a dui porta faucibus. Mauris feugiat, ante ac aliquam pulvinar, diam ipsum elementum nibh, quis iaculis velit elit tempus est. Duis aliquet arcu ac odio rutrum, id gravida purus pharetra. Nullam ultricies sem eu mi ornare ultricies sed vel odio. Proin non lorem rhoncus, bibendum mi at, interdum ligula. Quisque vel venenatis erat. Maecenas ut tortor leo. Nunc tincidunt varius nulla, vel dictum nulla. Ut porta ipsum elit, vel elementum lectus porttitor ac. Aliquam gravida, risus eu interdum venenatis, odio risus ullamcorper sem, a dapibus lacus diam eget mi...
+        </p>
+}
+
+export const getTabData = (setDef, clearDef) => ({
   intro: {
     title: "Introduction",
     sections: [
@@ -79,8 +92,21 @@ export const tabData = {
   },
   researchquestions: {
     ...defaultSection,
-    title: "Research Questions"
-  },
+    title: "Research Questions",
+    sections: [
+      {
+        title:"Definition test",
+        text: <p>
+                <span 
+                  className={styles.vocabWord}
+                  onMouseEnter={() => setDef(definitions["neuroscience of creativity"])}
+                  onMouseLeave={clearDef}>
+                  Neuroscience of creativity.
+                </span>
+              </p>,
+        sideContent: <p>Placeholder</p>
+    }
+  ]},
   methodology: {
     ...defaultSection,
     title: "Methodology"
@@ -97,4 +123,4 @@ export const tabData = {
     ...defaultSection,
     title: "Conclusion"
   }
-}
+})

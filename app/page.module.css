@@ -145,3 +145,37 @@
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
+
+.vocabWord {
+  background-color: lightpink;
+  cursor: help; /* Changes mouse to a question mark icon */
+  transition: background-color 0.2s;
+  padding: 0.1rem 0.2rem;
+  border-radius: 1rem;
+}
+
+.vocabWord:hover {
+  background-color: #e6f0fa;
+}
+
+.definitionCard {
+  background-color: #ffffff;
+  border-left: 4px solid #0056b3;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.definitionCard h3 {
+  margin-top: 0;
+  color: #0056b3;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.definitionCard p {
+  margin: 0;
+  line-height: 1.5;
+  color: #333;
+}

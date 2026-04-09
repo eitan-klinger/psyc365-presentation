@@ -1,16 +1,23 @@
 "use client";
 import { useState, useEffect, useRef } from 'react';
 import styles from './page.module.css';
-import { tabData } from './tabdata';
+import { getTabData } from './tabdata';
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState('rationale');
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
   
+  const [activeDefinition, setActiveDefinition] = useState(null);
+
   const sectionRefs = useRef([]);
   const scrollContainerRef = useRef(null);
 
   const currentIndexRef = useRef(activeSectionIndex);
+
+  const tabData = getTabData(
+    (content) => setActiveDefinition(content),
+    () => setActiveDefinition(null)
+  );
 
   useEffect(() => {
     currentIndexRef.current = activeSectionIndex;
@@ -18,6 +25,7 @@ export default function Page() {
 
   useEffect(() => {
     setActiveSectionIndex(0);
+    setActiveDefinition(null);
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop = 0;
     }
@@ -167,7 +175,9 @@ export default function Page() {
             {/* Only render the right column div if the tab requires it */}
             {tabHasGraphics && (
               <div className={styles.rightColumn}>
-                {currentTabData.sections[activeSectionIndex]?.sideContent}
+                {activeDefinition
+                  ? activeDefinition
+                  : currentTabData.sections[activeSectionIndex]?.sideContent}
               </div>
             )}
           </>
