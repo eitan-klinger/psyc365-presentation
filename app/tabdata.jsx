@@ -1,6 +1,8 @@
 import styles from './page.module.css';
 import Image from 'next/image';
 import EnlargableImage from './EnlargableImage';
+import Image from 'next/image';
+import EnlargableImage from './EnlargableImage';
 
 const definitions = {
   "neuroscience of creativity": (
